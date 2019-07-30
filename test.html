@@ -1,0 +1,137 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="style.css" />
+		<script type="text/javascript" src="js/effects.js"></script>
+		<script type="text/javascript" src="js/jQuery_3.4.1.js"></script>
+	</head>
+	<body>
+		<div class="box">
+			<div class="innerBox"></div>
+
+
+		</div>
+		<div class="xToping" id="zTop" onclick="xToping(0.5)">置顶</div>
+	</body>
+	<style type="text/css">
+		.box{width: 0;}
+		.innerBox{float: left;}
+		.box:after{
+			content:'';
+			clear: both;
+			display: block;
+			background: #000;
+		}
+	</style>
+	<script>
+		/*
+		 * JS 闭包
+		 * 闭包：可以在函数外访问到函数的局部变量
+		 * 利用JS可以将函数当做一个值，给一个变量赋值
+		 * 而在函数内部最后return 一个局部变量
+		 * 函数的值就是这个局部变量的值 
+		 */
+		var returnValue = date();
+		function date(){
+			var now = new Date();
+			var i = now.getDate();
+			return i;
+    	}
+
+
+    	// 继承
+    	// 父类
+    	function Persion (){}
+    		this.xLog = function (){
+    			console.log('打工是不可能')
+    		}
+		var per = new Persion();
+
+		
+		// 等待
+		function xWait(xTime){
+			var i = 0;
+			function xSleep(){
+				i++;
+				if(i>=xTime){
+					clearInterval(xTimer);
+				}
+			}
+			let xTimer = setInterval(xSleep,1000);
+			return i;
+		}
+		// 滑动动画效果
+		function animationMove(id){
+			var tImgNode = document.getElementById(id);
+			var xSliderNum = 0;
+			function xSlider(){
+				var tImgNodeWidth = tImgNode.offsetWidth;
+				xChangeNum = tImgNodeWidth / 50;
+				xSliderNum += xChangeNum;
+				tImgNode.style.marginLeft = '-'+xSliderNum + 'px';
+				if(xSliderNum >= 800){
+					clearInterval(xTimer);
+				}
+				if(xTimer){
+					console.log(xTimer);
+				}
+			}
+			var xTimer = setInterval(xSlider,20);
+
+		}
+		// 置顶
+		function xToping(xTime){
+			var xScroll = window.scrollY;
+			var xDistance = (xScroll / 25);
+			var timer = setInterval(function(){
+				window.scrollBy(0,-xDistance);
+				if(window.scrollY == 0){
+				clearInterval(timer);
+			}
+			},40*xTime);
+
+		}
+		// 遍历子元素
+		function siblings(id){
+			let xNodeObject = document.getElementById(id);
+			var nodes = [];
+			while(xNodeObject = xNodeObject.nextSibling){
+				if(xNodeObject.nodeType == 1){
+					nodes.push(xNodeObject);
+				}
+			}
+			xNodeObject = document.getElementById(id);
+			while(xNodeObject = xNodeObject.previousSibling){
+				if(xNodeObject.nodeType == 1){
+					nodes.push(xNodeObject);
+				}
+			}
+			return nodes;		
+		}	
+		// 更改颜色
+		function xChange(id){
+			var xNodeObject = document.getElementById(id);
+			xNodeObject.style.background = "#f0f";
+			for(let i = 0;i < siblings(id).length;i++){
+				siblings(id)[i].style.background = "#fff";
+				console.log(i);
+			}
+		}
+		var s =JSON.parse('{"name":"小明","age":14}');
+		var nowTime = new Date();
+		function y(){
+			var qq = 13;
+			var s = function(){
+				return qq++;
+			}
+			return s;
+		}
+		var xNodeArr = ['前端','开发','测试'];
+		var person = {
+			name : '陈梓林',
+			age  : '21',
+			write: function (){
+				console.log(xNodeArr);
+			}
+		}
+	</script>
+</html>
