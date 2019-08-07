@@ -1,0 +1,57 @@
+/*test.css  测试所用*/
+
+*{
+	padding: 0;
+	margin: 0;
+}
+ul,li{
+	list-style: none;
+}
+.xBoxImg{
+	width: 800px;
+	height: 300px;
+	margin: 0 auto;
+}
+
+/*置顶*/
+.xPlacehold{
+	height: 1200px;
+	border: 1px solid red;
+}
+.xToping{
+	border: 1px solid #aaa;
+	position: fixed;
+	right: 20px;
+	bottom: 120px;
+}
+
+/*进度条*/
+.xBox{
+	width: 350px;
+	margin: 20px auto;
+}
+.bar{
+	width: 300px;
+	height: 40px;
+	border: 1px solid #aaa;
+	border-radius: 10px;
+	overflow: hidden;
+	float: left;
+}
+.bar .inner{
+	width: 1%;
+	height: 100%;
+	background: #0f0;
+}
+
+/*研究position 定位的特性*/
+.box{width: 300px;margin: 20px auto;border: 1px solid red;position: relative;}
+.box .innerBox{width: 80px;height: 50px;background: #000;}
+/*position: relative,absolute,fixde,static
+	默认值(无效果)： static;
+	相对定位(相对元素正常文本流的位置定位): relative;
+	绝对定位(相对设置值非static的父元素定位，父元素是static则往上寻找，直到找到为止): absolute;
+	绝对定位(相对浏览器定位): fixed;
+	设置了posotion 则需要设置left,right,top,bottom 才有效果
+	*/
+
